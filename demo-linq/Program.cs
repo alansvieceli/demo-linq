@@ -96,6 +96,8 @@ namespace demo_linq
             Console.WriteLine("Média dos preços Categoria 5: " + r14);
             var r15 = Produtos.Where(p => p.Categoria.Id == 1).Select(p => p.Preco).Aggregate(0.0, (x, y) => x + y);
             Console.WriteLine("MapReduce (Agregação personalizada) da Categoria 1: " + r15); //mapReduce
+            var r152 = Produtos.Where(p => p.Categoria.Id == 5).Select(p => p.Preco).Aggregate(0.0, (x, y) => x + y);
+            Console.WriteLine("MapReduce (Agregação personalizada) da Categoria 5: " + r152); //mapReduce
 
             //Map = Select
             //Reduce = Aggregate
