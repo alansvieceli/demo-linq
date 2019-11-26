@@ -83,6 +83,22 @@ namespace demo_linq
             Console.WriteLine("Single or default test2: " + r9);
             Console.WriteLine();
 
+            //Operações agregação
+            var r10 = Produtos.Max(p => p.Preco);
+            Console.WriteLine("Maior Preço: " + r10);
+            var r11 = Produtos.Min(p => p.Preco);
+            Console.WriteLine("Menor Preço: " + r11);
+            var r12 = Produtos.Where(p => p.Categoria.Id == 1).Sum(p => p.Preco);
+            Console.WriteLine("Soma dos Preços da Categoria 1: " + r12);
+            var r13 = Produtos.Where(p => p.Categoria.Id == 1).Average(p => p.Preco);
+            Console.WriteLine("Média dos preços Categoria 1: " + r13);
+            var r14 = Produtos.Where(p => p.Categoria.Id == 5).Select(p => p.Preco).DefaultIfEmpty(0.0).Average(); // não tem elementos
+            Console.WriteLine("Média dos preços Categoria 5: " + r14);
+            var r15 = Produtos.Where(p => p.Categoria.Id == 1).Select(p => p.Preco).Aggregate(0.0, (x, y) => x + y);
+            Console.WriteLine("Soma da Categoria 1: " + r15);
+            Console.WriteLine();
+
+
         }
     }
 }
