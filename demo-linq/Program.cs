@@ -95,8 +95,23 @@ namespace demo_linq
             var r14 = Produtos.Where(p => p.Categoria.Id == 5).Select(p => p.Preco).DefaultIfEmpty(0.0).Average(); // não tem elementos
             Console.WriteLine("Média dos preços Categoria 5: " + r14);
             var r15 = Produtos.Where(p => p.Categoria.Id == 1).Select(p => p.Preco).Aggregate(0.0, (x, y) => x + y);
-            Console.WriteLine("Soma da Categoria 1: " + r15);
+            Console.WriteLine("MapReduce (Agregação personalizada) da Categoria 1: " + r15); //mapReduce
+
+            //Map = Select
+            //Reduce = Aggregate
+
             Console.WriteLine();
+
+            var r16 = Produtos.GroupBy(p => p.Categoria);
+            foreach (IGrouping<Categoria, Produto> group in r16)
+            {
+                Console.WriteLine("Categoria " + group.Key.Nome + ":");
+                foreach (Produto p in group)
+                {
+                    Console.WriteLine(p);
+                }
+                Console.WriteLine();
+            }
 
 
         }
