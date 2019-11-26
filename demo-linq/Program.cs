@@ -69,6 +69,20 @@ namespace demo_linq
             var r5 = r4.Skip(2).Take(4);
             Print("CAMADA 1 ORDENADO POR PRECO E NOME PULA(SKIP) 2 PEGA(TAKE) 4", r5);
 
+
+            //usando o Default evita dar exeção
+            var r6 = Produtos.FirstOrDefault();
+            Console.WriteLine("First or default test1: " + r6);
+            var r7 = Produtos.Where(p => p.Preco > 3000.0).FirstOrDefault();
+            Console.WriteLine("First or default test2: " + r7);
+            Console.WriteLine();
+
+            var r8 = Produtos.Where(p => p.Id == 3).SingleOrDefault(); 
+            Console.WriteLine("Single or default test1: " + r8);
+            var r9 = Produtos.Where(p => p.Id == 30).SingleOrDefault();
+            Console.WriteLine("Single or default test2: " + r9);
+            Console.WriteLine();
+
         }
     }
 }
