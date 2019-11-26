@@ -66,6 +66,9 @@ namespace demo_linq
             var r4 = Produtos.Where(p => p.Categoria.Camada == 1).OrderBy(p => p.Preco).ThenBy(p => p.Nome);
             Print("CAMADA 1 ORDENADO POR PRECO E NOME", r4);
 
+            var r5 = r4.Skip(2).Take(4);
+            Print("CAMADA 1 ORDENADO POR PRECO E NOME PULA(SKIP) 2 PEGA(TAKE) 4", r5);
+
         }
     }
 }
